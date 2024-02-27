@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur - Page non trouvée</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .error-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #e74c3c;
+        }
+
+        p {
+            color: #333;
+        }
+
+        #temps-restant {
+            font-size: 24px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <h1>Erreur PasDeCervau</h1>
+        <p>Le site est bloqué pendant <span id="temps-restant">10</span> secondes.</p>
+    </div>
+
+    <!-- Ajoutez le script JavaScript -->
+    <script>
+        // Compte à rebours de 30 secondes
+        var tempsRestant = 10;
+
+        function decrementerCompteARebours() {
+            tempsRestant--;
+            if (tempsRestant <= 0) {
+                // Redirection vers Joel.html
+                window.location.href = 'Joel.html';
+            } else {
+                // Mettre à jour le texte avec le temps restant
+                document.getElementById('temps-restant').innerText = tempsRestant;
+                // Appeler la fonction de décrément une fois par seconde
+                setTimeout(decrementerCompteARebours, 1000);
+            }
+        }
+
+        // Démarrer le compte à rebours lors du chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            decrementerCompteARebours();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Alert with PHP Action</title>
+
+    <!-- Ajoutez les liens vers les fichiers CSS et JavaScript de SweetAlert et jQuery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Votre contenu HTML va ici -->
+    <h1>Bienvenu sur cette page.</h1>
+    <p>Quel est la qualification de Joel Aegerter ?</p>
+    <!-- Utilisez des boutons radio pour chaque option -->
+    <label>
+        <input type="radio" name="options" id="option1"> Le meilleur grand frère du monde
+    </label>
+
+    <label>
+        <input type="radio" name="options" id="option2"> Le meilleur des grands frères du monde
+    </label>
+
+    <label>
+        <input type="radio" name="options" id="option3"> Le meilleur des grands frères du monde
+    </label>
+
+    <!-- Ajoutez un bouton de validation -->
+    <button onclick="validerOptions()">Valider</button>
+
+    <!-- Ajoutez le script JavaScript -->
+    <script>
+        // La fonction validerOptions() est appelée lorsque l'utilisateur clique sur le bouton de validation
+        function validerOptions() {
+            // Vérifiez quelle option est sélectionnée
+            var optionSelectionnee = $('input[name=options]:checked').attr('id');
+
+            // Vérifiez si l'option 3 est sélectionnée
+            if (optionSelectionnee === 'option3') {
+                // Affichez la boîte de dialogue personnalisée
+                Swal.fire({
+                    title: 'Erreur 121108',
+                    text: 'Erreur de système. Pour recharger la page, cliquez sur le bouton "Joel est trop cool"',
+                    confirmButtonText: 'Joel est trop cool',
+                    showCancelButton: true,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Utilisez AJAX pour envoyer une requête au serveur
+                        window.location.href = 'cadau.html';
+                    }
+                });
+            } else {
+                // Affichez un message indiquant que l'utilisateur a cliqué sur le mauvais bouton
+                alert('Mauvaise réponse. Vous serez redirigé vers une page d\'erreur.');
+                // Vous pouvez rediriger l'utilisateur vers une page d'erreur
+                window.location.href = 'erreur.html'; // Remplacez 'erreur.html' par le chemin de votre page d'erreur
+            }
+        }
+    </script>
+
+</body>
+</html>

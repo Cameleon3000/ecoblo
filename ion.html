@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ion</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh; /* Make sure the body takes up the full viewport height */
+            margin: 0; /* Remove default margin */
+        }
+
+        .container {
+            margin-top: 20px; /* Adjust the top margin as needed */
+        }
+
+        .common-style {
+            padding: 8px;
+            text-align: center;
+            border-radius: 1em;
+            color: black;
+            width: 100px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* Adjust the values as needed */
+        }
+
+        header {
+            background-color: white;
+        }
+
+        .a {
+            background-color: white;
+        }
+
+        .resized-image {
+            width: 50px; /* Adjust the width as needed */
+            height: auto; /* Maintain the aspect ratio */
+            cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="common-style">Salut, si tu veux jouer, clique sur le bouton si dessous !!!!!</header>
+        <div class="a common-style" id="randomLink"><a href="#"><img class="resized-image" src="https://th.bing.com/th/id/OIP.P_khlY2cwFhTx8G_Qko4IwAAAA?w=186&h=186&c=7&r=0&o=5&dpr=2&pid=1.7"></a></div>
+    </div>
+
+    <script>
+        document.getElementById('randomLink').addEventListener('click', function() {
+            var randomLinks = [
+                'https://www.ion.com',
+                'https://www.raph.com'
+                // Add more links as needed
+            ];
+
+            var randomIndex = Math.floor(Math.random() * randomLinks.length);
+            var randomUrl = randomLinks[randomIndex];
+
+            window.location.href = randomUrl;
+        });
+    </script>
+</body>
+</html>

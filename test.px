@@ -1,0 +1,15 @@
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+
+import torch
+from torchvision.models.segmentation import deeplabv3_resnet101
+from torchvision import transforms
+
+def make_deeplab(device):
+    deeplab = deeplabv3_resnet101(pretrained=True).to(device)
+    deeplab.eval()
+    return deeplab
+
+device = torch.device("cpu")
+deeplab = make_deeplab(device)

@@ -1,0 +1,23 @@
+import requests
+
+# URL de votre script de téléversement sur le serveur
+url = "http://votre-site.com/upload.php"
+
+# Chemin vers le fichier que vous souhaitez téléverser
+fichier_local = "/chemin/vers/votre/fichier"
+
+# Envoi de la requête avec requests
+with open(fichier_local, 'rb') as fichier:
+    fichiers = {'file': (fichier_local, fichier)}
+    response = requests.post(url, files=fichiers)
+
+# Vérification de la réponse du serveur
+if response.status_code == 200:
+    print("Téléversement réussi. Réponse du serveur:")
+    print(response.text)
+
+    # Enregistrement de la réponse dans un fichier HTML
+    with open('reponse.html', 'w') as fichier_html:
+        fichier_html.write(response.text)
+else:
+    print(f"Échec du téléversement. Code d'état HTTP : {response.status_code}")
